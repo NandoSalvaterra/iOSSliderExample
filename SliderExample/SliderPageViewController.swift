@@ -25,19 +25,39 @@ class SliderPageViewController: UIPageViewController {
         return controllers
     } ()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
+        scrollToPage(index: 0)
 
     }
     
-    func scrollToPage() {
+    func scrollToPage(index: Int) {
+        let controllerToShow = controllers[index]
+        var direction = UIPageViewControllerNavigationDirection.forward
         
+        if let currentViewController = viewControllers?.first {
+            let currentIndex = controllers.index(of: currentViewController)
+            if  currentIndex! > index {
+                direction = .reverse
+            }
+        }
+        configureDisplay(viewController: controllerToShow)
+        setViewControllers([controllerToShow], direction: direction, animated: true, completion: nil)
     }
     
-    
+    func configureDisplay(viewController: UIViewController) {
+        for (index, vc) in controllers.enumerated() {
+            if  viewController === vc {
+                 let imageViewController = viewController as! SliderImageViewController
+                    imageViewController.image = images[index]
+                
+            }
+        }
+    }
 
 }
 
