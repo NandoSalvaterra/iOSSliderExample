@@ -9,19 +9,19 @@
 import UIKit
 
 class SliderPageViewController: UIPageViewController {
-
-    var images: [UIImage]? //nil??
     
+    var images: [UIImage]!
+    weak var sliderPageControlDelegate: SliderPageControlDelegate?
     lazy var controllers : Array<UIViewController> = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var controllers = [UIViewController]()
-        if let images = self.images {
-            for image in images {
-                let controller = storyboard.instantiateViewController(withIdentifier: "sliderImageViewController") as! SliderImageViewController
-                controller.image = image
-                controllers.append(controller)
-            }
+    
+        for image in self.images {
+            let controller = storyboard.instantiateViewController(withIdentifier: "sliderImageViewController") as! SliderImageViewController
+            controller.image = image
+            controllers.append(controller)
         }
+        self.sliderPageControlDelegate?.setupPageControl(numberOfPages: controllers.count)
         return controllers
     } ()
     
@@ -32,7 +32,7 @@ class SliderPageViewController: UIPageViewController {
         self.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
         scrollToPage(index: 0)
-
+        
     }
     
     func scrollToPage(index: Int) {
@@ -52,13 +52,14 @@ class SliderPageViewController: UIPageViewController {
     func configureDisplay(viewController: UIViewController) {
         for (index, vc) in controllers.enumerated() {
             if  viewController === vc {
-                 let imageViewController = viewController as! SliderImageViewController
-                    imageViewController.image = images[index]
+                let imageViewController = viewController as! SliderImageViewController
+                imageViewController.image = images[index]
+                self.sliderPageControlDelegate?.turnPageControl(to: index)
                 
             }
         }
     }
-
+    
 }
 
 extension SliderPageViewController: UIPageViewControllerDataSource {
@@ -84,4 +85,14 @@ extension SliderPageViewController: UIPageViewControllerDataSource {
 
 extension SliderPageViewController: UIPageViewControllerDelegate {
     
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        self.configureDisplay(viewController: pendingViewControllers.first as! SliderImageViewController)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        if !completed {
+            self.configureDisplay(viewController: previousViewControllers.first as! SliderImageViewController)
+        }
+    }
 }

@@ -14,6 +14,8 @@
 		5B6BDDCF1F60B40C00491639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BDDCD1F60B40C00491639 /* LaunchScreen.storyboard */; };
 		5B6BDDD71F60BB3E00491639 /* SliderImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BDDD61F60BB3E00491639 /* SliderImageViewController.swift */; };
 		5B6BDDD91F60BC5100491639 /* SliderPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BDDD81F60BC5100491639 /* SliderPageViewController.swift */; };
+		5B6EB04E1F61F032007B8C06 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EB04D1F61F032007B8C06 /* ImageService.swift */; };
+		5B6EB0501F620431007B8C06 /* SliderPageControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6EB04F1F620431007B8C06 /* SliderPageControlDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5B6BDDD01F60B40C00491639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B6BDDD61F60BB3E00491639 /* SliderImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderImageViewController.swift; sourceTree = "<group>"; };
 		5B6BDDD81F60BC5100491639 /* SliderPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderPageViewController.swift; sourceTree = "<group>"; };
+		5B6EB04D1F61F032007B8C06 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		5B6EB04F1F620431007B8C06 /* SliderPageControlDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderPageControlDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				5B6BDDC41F60B40C00491639 /* AppDelegate.swift */,
+				5B6EB04D1F61F032007B8C06 /* ImageService.swift */,
+				5B6EB04F1F620431007B8C06 /* SliderPageControlDelegate.swift */,
 				5B6BDDD81F60BC5100491639 /* SliderPageViewController.swift */,
 				5B6BDDC61F60B40C00491639 /* ViewController.swift */,
 				5B6BDDD61F60BB3E00491639 /* SliderImageViewController.swift */,
@@ -145,6 +151,8 @@
 				5B6BDDD91F60BC5100491639 /* SliderPageViewController.swift in Sources */,
 				5B6BDDC71F60B40C00491639 /* ViewController.swift in Sources */,
 				5B6BDDD71F60BB3E00491639 /* SliderImageViewController.swift in Sources */,
+				5B6EB04E1F61F032007B8C06 /* ImageService.swift in Sources */,
+				5B6EB0501F620431007B8C06 /* SliderPageControlDelegate.swift in Sources */,
 				5B6BDDC51F60B40C00491639 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

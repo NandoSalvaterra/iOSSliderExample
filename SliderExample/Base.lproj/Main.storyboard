@@ -24,27 +24,37 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q43-wY-qY5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
-                                    <segue destination="HXI-B4-Xpx" kind="embed" id="Zei-nO-WO0"/>
+                                    <segue destination="HXI-B4-Xpx" kind="embed" identifier="showPageViewController" id="Zei-nO-WO0"/>
                                 </connections>
                             </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="d8i-jG-gSA">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Q43-wY-qY5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ApG-qu-9r2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d8i-jG-gSA" secondAttribute="bottom" constant="20" id="Tsx-Bz-YjW"/>
                             <constraint firstAttribute="trailing" secondItem="Q43-wY-qY5" secondAttribute="trailing" id="adS-6V-By6"/>
+                            <constraint firstItem="d8i-jG-gSA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eOa-TW-gZI"/>
                             <constraint firstItem="Q43-wY-qY5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xsK-tF-tcG"/>
                             <constraint firstItem="Q43-wY-qY5" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="z7T-mq-OFL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="d8i-jG-gSA" id="ZMy-Ib-VE4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Slider Page View Controller-->
         <scene sceneID="FEj-ev-76n">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="HXI-B4-Xpx" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="HXI-B4-Xpx" customClass="SliderPageViewController" customModule="SliderExample" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ny-Pc-RV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1038" y="37"/>
