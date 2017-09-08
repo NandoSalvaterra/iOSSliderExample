@@ -43,6 +43,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B33BB8E1F6357C500950FF2 /* SliderImage */ = {
+			isa = PBXGroup;
+			children = (
+				5B6EB04F1F620431007B8C06 /* SliderPageControlDelegate.swift */,
+				5B6BDDD81F60BC5100491639 /* SliderPageViewController.swift */,
+				5B6BDDD61F60BB3E00491639 /* SliderImageViewController.swift */,
+			);
+			name = SliderImage;
+			sourceTree = "<group>";
+		};
+		5B33BB8F1F6357F200950FF2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5B6BDDC81F60B40C00491639 /* Main.storyboard */,
+				5B6BDDCD1F60B40C00491639 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
 		5B6BDDB81F60B40C00491639 = {
 			isa = PBXGroup;
 			children = (
@@ -64,13 +83,10 @@
 			children = (
 				5B6BDDC41F60B40C00491639 /* AppDelegate.swift */,
 				5B6EB04D1F61F032007B8C06 /* ImageService.swift */,
-				5B6EB04F1F620431007B8C06 /* SliderPageControlDelegate.swift */,
-				5B6BDDD81F60BC5100491639 /* SliderPageViewController.swift */,
 				5B6BDDC61F60B40C00491639 /* ViewController.swift */,
-				5B6BDDD61F60BB3E00491639 /* SliderImageViewController.swift */,
-				5B6BDDC81F60B40C00491639 /* Main.storyboard */,
+				5B33BB8E1F6357C500950FF2 /* SliderImage */,
+				5B33BB8F1F6357F200950FF2 /* Storyboard */,
 				5B6BDDCB1F60B40C00491639 /* Assets.xcassets */,
-				5B6BDDCD1F60B40C00491639 /* LaunchScreen.storyboard */,
 				5B6BDDD01F60B40C00491639 /* Info.plist */,
 			);
 			path = SliderExample;

@@ -29,9 +29,8 @@ class SliderPageViewController: UIPageViewController, UIPageViewControllerDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
         self.dataSource = self
-        self.automaticallyAdjustsScrollViewInsets = false
+        self.delegate = self
         scrollToPage(index: 0)
     }
     
