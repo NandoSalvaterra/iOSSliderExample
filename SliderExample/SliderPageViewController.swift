@@ -8,14 +8,15 @@
 
 import UIKit
 
-class SliderPageViewController: UIPageViewController {
+class SliderPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     var images: [UIImage]!
     weak var sliderPageControlDelegate: SliderPageControlDelegate?
+    
     lazy var controllers : Array<UIViewController> = {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         var controllers = [UIViewController]()
-    
+        
         for image in self.images {
             let controller = storyboard.instantiateViewController(withIdentifier: "sliderImageViewController") as! SliderImageViewController
             controller.image = image
@@ -32,38 +33,9 @@ class SliderPageViewController: UIPageViewController {
         self.dataSource = self
         self.automaticallyAdjustsScrollViewInsets = false
         scrollToPage(index: 0)
-        
     }
     
-    func scrollToPage(index: Int) {
-        let controllerToShow = controllers[index]
-        var direction = UIPageViewControllerNavigationDirection.forward
-        
-        if let currentViewController = viewControllers?.first {
-            let currentIndex = controllers.index(of: currentViewController)
-            if  currentIndex! > index {
-                direction = .reverse
-            }
-        }
-        configureDisplay(viewController: controllerToShow)
-        setViewControllers([controllerToShow], direction: direction, animated: true, completion: nil)
-    }
-    
-    func configureDisplay(viewController: UIViewController) {
-        for (index, vc) in controllers.enumerated() {
-            if  viewController === vc {
-                let imageViewController = viewController as! SliderImageViewController
-                imageViewController.image = images[index]
-                self.sliderPageControlDelegate?.turnPageControl(to: index)
-                
-            }
-        }
-    }
-    
-}
-
-extension SliderPageViewController: UIPageViewControllerDataSource {
-    
+    //MARK: - UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let index = controllers.index(of: viewController){
             if index > 0 {
@@ -81,18 +53,39 @@ extension SliderPageViewController: UIPageViewControllerDataSource {
         }
         return controllers.first
     }
-}
-
-extension SliderPageViewController: UIPageViewControllerDelegate {
     
+    //MARK: - UIPageViewControllerDelegate
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        self.configureDisplay(viewController: pendingViewControllers.first as! SliderImageViewController)
+        changePageControl(of: pendingViewControllers.first!)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
         if !completed {
-            self.configureDisplay(viewController: previousViewControllers.first as! SliderImageViewController)
+            changePageControl(of: previousViewControllers.first!)
         }
     }
+    
+    func scrollToPage(index: Int) {
+        let controllerToShow = controllers[index]
+        var direction = UIPageViewControllerNavigationDirection.forward
+        
+        if let currentViewController = viewControllers?.first {
+            let currentIndex = controllers.index(of: currentViewController)
+            if  currentIndex! > index {
+                direction = .reverse
+            }
+        }
+        setViewControllers([controllerToShow], direction: direction, animated: true, completion: nil)
+    }
+    
+    func changePageControl(of viewController: UIViewController) {
+        for (index, vc) in controllers.enumerated() {
+            if  viewController === vc {
+                self.sliderPageControlDelegate?.turnPageControl(to: index)
+            }
+        }
+    }
+    
 }
+
